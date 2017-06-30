@@ -1,0 +1,11 @@
+{
+    "type": "object",
+    "properties" : { 
+	"responseCode": {
+	    "type": "string",
+	    "pattern": "[0-9]{5}"
+	}
+    },
+    "required": ["responseCode"],
+    "additionalProperties": false
+}
