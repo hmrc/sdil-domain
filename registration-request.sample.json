@@ -1,3 +1,90 @@
 {
-    "responseCode": "12345"
+    "legalEntity": {
+	"legalStatus": "SoleProprietor",
+	"applicationDate": "2017-02-25",
+	"taxStartDate": "2017-02-25",
+	"agentAppointed" : true
+    },
+    "customerIdentification": {
+	"nino": "AB 12 34 56 C",
+	"postcode": "MK42 9PG",
+	"organisationName": "Toxicola Plc",
+	"title": "Mr",
+	"firstName": "Fred",
+	"lastName": "Smith",
+	"dateOfBirth": "1972-05-02"
+    },
+    "aboutTheBusiness": {
+	"legalStatus": "LimitedCompany",
+	"title": "Rev",
+	"surname": "Johnson",
+	"dateOfBirth": "1981-01-09",
+	"tradingName": "Drastix Chemicals Conglomerate"	
+    },
+    "businessContactDetails": {
+	"domestic": false,
+	"address": {
+	    "line1": "12 The Street",
+	    "line2": "Genericford",
+	    "line3": "Blandshire",
+	    "postcode": "MK42 9PG"
+	},
+	"domestic2": false,	
+	"telephoneNumber": "02324 512312",
+	"mobileNumber": "07829 234245",
+	"email": "blahdy@toxicola.com",
+	"faxNumber": "02324 512313"
+    },
+    "correspondenceContactDetails": {
+	"differsFromBusinessContact": true,
+	"domestic": false,
+	"address": {
+	    "line1": "12 The Street",
+	    "line2": "Genericford",
+	    "line3": "Blandshire",
+	    "postcode": "MK42 9PG"
+	},
+	"domestic2": false,	
+	"telephoneNumber": "02324 512312",
+	"mobileNumber": "07829 234245",
+	"email": "blahdy@toxicola.com",
+	"faxNumber": "02324 512313"
+    },
+    "primaryPersonContactDetails": {
+	"name": "Joe Bloggs",
+	"positionInCompany": "Director",
+	"telephoneNumber": "01234 567890",
+	"mobileNumber": "07890 123456",
+	"emailAddress": "jblogs@drastix.com"
+    },
+    "sdilDetails": {
+	"isProducer": true,
+	"isImporter": true,
+	"isCopacker": true,
+	"lessThanOneMillionProduced": false,
+	"producerClassification": "LargeProducer",
+	"smallProducerExemptionRequested": false,
+	"copackerUsed": true,
+	"voluntarilyRegistered": true
+    },
+    "sdilActivity": {
+	"litresProducedPerYear": { 
+	    "lowerRate": 100000,
+	    "higherRate": 0
+	},
+	"litresImportedPerYear": { 
+	    "lowerRate": 100000,
+	    "higherRate": 0
+	},
+	"litresPackagedPerYear": { 
+	    "lowerRate": 100000,
+	    "higherRate": 0
+	}
+    },
+    "estimatedTax" : 1000000,
+    "taxObligationStartDate": "2017-06-01",
+    "declaration": {
+	"status": "No idea",
+	"confirmed": true
+    }	
 }

@@ -1,11 +1,284 @@
 {
     "type": "object",
-    "properties" : { 
-	"responseCode": {
-	    "type": "string",
-	    "pattern": "[0-9]{5}"
+    "properties" : {
+
+	"legalEntity": {
+	    "type": "object",
+	    "properties": {
+		"legalStatus": {
+		    "type": "string",
+		    "enum": ["SoleProprietor","LimitedCompany",
+			      "LLP","UnincorporatedBody","Partnership","Trust"]
+		},
+		"applicationDate" : {
+		    "$ref": "#/definitions/date"
+		},
+		"taxStartDate" : {
+		    "$ref": "#/definitions/date"
+		},
+		"agentAppointed": {
+		    "type": "boolean"
+		}
+	    },
+	    "required": ["legalStatus","applicationDate","taxStartDate", "agentAppointed"],
+	    "additionalProperties": false
+	},
+
+	"customerIdentification": {
+	    "type": "object",
+	    "properties": {
+		"nino": {
+		    "type": "string",
+		    "pattern": "^(([A-CEGHJ-PR-TW-Z][A-CEGHJ-NPR-TW-Z]) ?([0-9]{2}) ?([0-9]{2}) ?([0-9]{2}) ?([A-D]{1})|((XX) ?(99) ?(99) ?(99) ?(X)))$"
+		},
+		"postcode": {
+		    "type": "string"
+		},
+		"organisationName": {
+		    "type": "string"
+		},
+		"title": {
+		    "type": "string"
+		},
+		"firstName": {
+		    "type": "string"
+		},
+		"lastName": {
+		    "type": "string"
+		},
+		"dateOfBirth": {
+		    "$ref": "#/definitions/date"
+		}
+	    },
+	    "required": ["nino","postcode","organisationName", "title", "firstName", "lastName"],
+	    "additionalProperties": false
+
+	},
+
+	"aboutTheBusiness": {
+	    "type": "object",
+	    "properties": {
+		"legalStatus": {
+		    "type": "string",
+		    "enum": ["LimitedCompany", "LLP", "UnincorporatedBody", "Partnership"]
+		},
+		"title": {
+		    "type": "string"
+		},
+		"surname": {
+		    "type": "string"
+		},
+		"dateOfBirth": {
+		    "$ref": "#/definitions/date"
+		},
+		"tradingName": {
+		    "type": "string"
+		}
+	    },
+	    "required": ["legalStatus","title","surname", "dateOfBirth", "tradingName"],
+	    "additionalProperties": false
+	},
+
+	"businessContactDetails": {
+	    "type": "object",
+	    "properties": {
+		"domestic": {
+		    "type": "boolean"
+		},
+		"address": {
+		    "$ref": "#/definitions/address"
+		},
+		"domestic2": {
+		    "type": "boolean"
+		},
+		"telephoneNumber": {
+		    "$ref": "#/definitions/telephone"
+		},
+		"mobileNumber": {
+		    "$ref": "#/definitions/telephone"
+		},
+		"email": {
+		    "type": "string"
+		},
+		"faxNumber": {
+		    "$ref": "#/definitions/telephone"
+		}
+	    },
+	    "required": ["domestic","address","domestic2", "telephoneNumber", "mobileNumber", "email"],
+	    "additionalProperties": false
+
+	},
+
+	"correspondenceContactDetails": {
+	    "type": "object",
+	    "properties": {
+		"differsFromBusinessContact": {
+		    "type": "boolean"
+		},
+		"domestic": {
+		    "type": "boolean"
+		},
+		"address": {
+		    "$ref": "#/definitions/address"		    
+		},
+		"domestic2": {
+		    "type": "boolean"
+		},
+		"telephoneNumber": {
+		    "$ref": "#/definitions/telephone"		    
+		},
+		"mobileNumber": {
+		    "$ref": "#/definitions/telephone"		    
+		},
+		"email": {
+		    "type": "string"
+		},
+		"faxNumber": {
+		    "$ref": "#/definitions/telephone"		    
+		}
+		
+	    },
+	    "required": ["differsFromBusinessContact", "domestic","address","domestic2", "telephoneNumber", "mobileNumber", "email"],
+	    "additionalProperties": false
+	},
+
+	"primaryPersonContactDetails": {
+	    "type": "object",
+	    "properties": {
+		"name": {
+		    "type": "string"
+		},
+		"positionInCompany": {
+		    "type": "string"
+		},
+		"telephoneNumber": {
+		    "$ref": "#/definitions/telephone"		    
+		},
+		"mobileNumber": {
+		    "$ref": "#/definitions/telephone"
+		},
+		"emailAddress": {
+		    "type": "string"
+		}
+	    },
+	    "required": ["name", "positionInCompany","telephoneNumber","mobileNumber", "emailAddress"],
+	    "additionalProperties": false
+	},
+
+	"sdilDetails": {
+	    "type": "object",
+	    "properties": {
+		"isProducer": {
+		    "type": "boolean"
+		},
+		"isImporter": {
+		    "type": "boolean"
+		},
+		"isCopacker": {
+		    "type": "boolean"
+		},
+		"lessThanOneMillionProduced": {
+		    "type": "boolean"
+		},
+		"producerClassification": {
+		    "type": "string"
+		},
+		"smallProducerExemptionRequested": {
+		    "type": "boolean"
+		},
+		"copackerUsed": {
+		    "type": "boolean"
+		},
+		"voluntarilyRegistered": {
+		    "type": "boolean"
+		}
+	    },
+	    "required": ["isProducer", "isImporter", "isCopacker", "lessThanOneMillionProduced", "producerClassification", "smallProducerExemptionRequested", "copackerUsed", "voluntarilyRegistered"],
+	    "additionalProperties": false
+	},
+
+	"sdilActivity": {
+	    "type": "object",
+	    "properties": {
+		"litresProducedPerYear": {
+		    "$ref": "#/definitions/output" 		    
+		},
+		"litresImportedPerYear": {
+		    "$ref": "#/definitions/output" 
+		},
+		"litresPackagedPerYear": {
+		    "$ref": "#/definitions/output"
+		}
+	    },
+	    "required": ["litresProducedPerYear", "litresImportedPerYear", "litresPackagedPerYear"],
+	    "additionalProperties": false
+	},
+
+	"estimatedTax": {
+	    "type": "number"
+	},
+
+	"taxObligationStartDate": {
+	    "$ref": "#/definitions/date"
+	},
+
+	"declaration": {
+	    "type": "object",
+	    "properties": {
+		"status": {
+		    "type": "string"
+		},
+		"confirmed": {
+		    "type": "boolean"
+		}
+	    },
+	    "required": ["status", "confirmed"],
+	    "additionalProperties": false
 	}
+
     },
-    "required": ["responseCode"],
-    "additionalProperties": false
+    "required": ["legalEntity", "customerIdentification", "aboutTheBusiness", "businessContactDetails", "correspondenceContactDetails", "primaryPersonContactDetails", "sdilDetails", "sdilActivity", "estimatedTax", "taxObligationStartDate", "declaration" ],
+    "additionalProperties": false,
+
+    "definitions": {
+	"address": {
+	    "type": "object",
+	    "properties": {
+		"line1": { "type": "string" },
+		"line2": { "type": "string" },
+		"line3": { "type": "string" },
+		"line4": { "type": "string" },
+		"postcode": {
+		    "type": "string",
+		    "pattern": "^(([gG][iI][rR] {0,}0[aA]{2})|((([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y]?[0-9][0-9]?)|(([a-pr-uwyzA-PR-UWYZ][0-9][a-hjkstuwA-HJKSTUW])|([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y][0-9][abehmnprv-yABEHMNPRV-Y]))) {0,}[0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2}))$"
+		}
+	    },
+	    "required": ["line1", "postcode"]
+	},
+	"telephone": {
+	    "type": "string",
+	    "pattern": "^(((\\+44\\s?\\d{4}|\\(?0\\d{4}\\)?)\\s?\\d{3}\\s?\\d{3})|((\\+44\\s?\\d{3}|\\(?0\\d{3}\\)?)\\s?\\d{3}\\s?\\d{4})|((\\+44\\s?\\d{2}|\\(?0\\d{2}\\)?)\\s?\\d{4}\\s?\\d{4}))(\\s?\\#(\\d{4}|\\d{3}))?$"
+
+	},
+	"date": {
+	    "type": "string",
+	    "pattern": "[0-9]{4}-[0-9]{2}-[0-9]{2}"
+	},
+	"output": 
+	{
+	    "type": "object",
+	    "properties": {
+		"lowerRate": {
+		    "type": "number",
+		    "minimum": 0
+		},
+		"higherRate": {
+		    "type": "number",
+		    "minimum": 0
+		}
+	    },
+	    "required": ["lowerRate", "higherRate"],
+	    "additionalProperties": false	    
+	}
+    }
 }
