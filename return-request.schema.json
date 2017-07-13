@@ -1,0 +1,77 @@
+{
+    "type": "object",
+    "properties" : {
+	"litresProduced": { "$ref": "#/definitions/output" },
+	"packagedForSmallProducers": {
+	    "type": "array",
+	      "items": {
+		  "type": "object",
+		  "properties": {
+		      "sdilRef": { "type": "string" },
+		      "litres": { "$ref": "#/definitions/output" }
+		  },
+		  "required": [ "sdilRef", "litres" ],
+		  "additionalProperties": false
+	      }
+	},
+	"producers" : { "$ref": "#/definitions/output" },
+	"importedFromSmallOverseasProducers": {
+	    "type": "array",
+	    "items": {
+		"type": "object",
+		"properties": {
+		    "name": { "type": "string" },
+		    "litres": { "$ref": "#/definitions/output" }
+		},
+		"required": [ "name", "litres" ],
+		"additionalProperties": false
+	    }
+	},
+	"importedFromLargeOverseasProducers" : { "$ref": "#/definitions/output" },
+	"exported" : { "$ref": "#/definitions/output" },
+	"wasted" : { "$ref": "#/definitions/output" },
+	"productionSites": {
+	    "type": "array",
+	    "items": { "$ref": "#/definitions/site" }
+	},
+	"warehousingSites": {
+	    "type": "array",
+	    "items": { "$ref": "#/definitions/site" }
+	}
+	
+    },
+    "required": ["litresProduced", "packagedForSmallProducers", "producers", "importedFromSmallOverseasProducers", "importedFromLargeOverseasProducers", "exported", "wasted", "productionSites", "warehousingSites" ],
+    "additionalProperties": false,
+
+    "definitions": {
+	"output": 
+	{
+	    "type": "object",
+	    "properties": {
+		"lowerRate": {
+		    "type": "number",
+		    "minimum": 0
+		},
+		"higherRate": {
+		    "type": "number",
+		    "minimum": 0
+		}
+	    },
+	    "additionalProperties": false	    
+	},
+	"postcode": {
+	    "type": "string",
+	    "pattern": "^(([gG][iI][rR] {0,}0[aA]{2})|((([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y]?[0-9][0-9]?)|(([a-pr-uwyzA-PR-UWYZ][0-9][a-hjkstuwA-HJKSTUW])|([a-pr-uwyzA-PR-UWYZ][a-hk-yA-HK-Y][0-9][abehmnprv-yABEHMNPRV-Y]))) {0,}[0-9][abd-hjlnp-uw-zABD-HJLNP-UW-Z]{2}))$"
+	},
+	"site": {
+	    "type": "object",
+	    "properties": {
+		"ref": { "type": "string" },
+		"postcode": { "$ref": "#/definitions/postcode" }
+	    },
+	    "required": [ "ref", "postcode" ],
+	    "additionalProperties": false
+	}
+    }
+    
+}

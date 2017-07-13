@@ -1,0 +1,27 @@
+{
+    "litresProduced": { "lowerRate": 18000, "higherRate": 40000},
+    "packagedForSmallProducers": [
+	{ "sdilRef": "ABC12345", "litres": { "lowerRate": 10000} },
+	{ "sdilRef": "ABC12346", "litres": { "lowerRate": 12000, "higherRate": 46000} },
+	{ "sdilRef": "ABC12347", "litres": { "lowerRate": 5000, "higherRate": 59000} }
+    ],
+    "producers": { "lowerRate": 1250000, "higherRate": 850000 },
+    "importedFromSmallOverseasProducers": [
+	{ "name": "Small producer n", "litres": { "lowerRate": 20000, "higherRate": 5000} },
+	{ "name": "Small producer n+1", "litres": { "lowerRate": 32000, "higherRate": 16000} },
+	{ "name": "Small producer n+2", "litres": { "lowerRate": 45000, "higherRate": 19000} }
+    ],
+    "importedFromLargeOverseasProducers": { "lowerRate": 60000, "higherRate": 80000},
+    "exported": { "lowerRate": 8000, "higherRate": 15000},
+    "wasted": { "lowerRate": 150, "higherRate": 300},
+    "productionSites" : [
+	{ "ref": "Site Ref 1", "postcode": "NR20 3FD" },
+	{ "ref": "Site Ref 2", "postcode": "NR20 3FD" },
+	{ "ref": "Site Ref 3", "postcode": "NR20 3FD" }
+    ],
+    "warehousingSites": [
+	{ "ref": "Site Ref 1", "postcode": "NR20 3FD" },
+	{ "ref": "Site Ref 2", "postcode": "NR20 3FD" },
+	{ "ref": "Site Ref 3", "postcode": "NR20 3FD" }
+    ]
+}
